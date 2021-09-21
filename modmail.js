@@ -226,12 +226,12 @@ module.exports = client => {
                             let attachment = [];
                             try {
                                 attachment = [await create_transcript_buffer([...messageCollection.values()], message.channel, message.guild)]
-                                try{ fs.unlinkSync(`${process.cwd()}/${message.channel.name}.html`)}catch(e){ console.log(e) }
+                                
                             } catch (e){
                                 console.log(e)
                                 attachment = []
                             }
-                            author.send({
+                            await author.send({
                                 files: attachment,
                                 embeds: [
                                     new Discord.MessageEmbed()
@@ -242,7 +242,7 @@ module.exports = client => {
                                         .setTitle("✅ Supporter Closed the Ticket")
                                     ]
                             }).catch(console.error)
-                            message.author.send({
+                            await message.author.send({
                                 files: attachment,
                                 embeds: [
                                     new Discord.MessageEmbed()
@@ -253,7 +253,7 @@ module.exports = client => {
                                         .setTitle("✅ Supporter Closed the Ticket")
                                     ]
                             }).catch(console.error)
-                            return message.reply({
+                            await message.reply({
                                 files: attachment,
                                 embeds: [
                                     new Discord.MessageEmbed()
@@ -265,6 +265,7 @@ module.exports = client => {
                                         .setDescription(`U CAN NOW DELETE IT IF YOU WANT!`)
                                     ]
                             }).catch(console.error)
+                            try{ fs.unlinkSync(`${process.cwd()}/${message.channel.name}.html`)}catch(e){ console.log(e) }
                         } else {
                             return message.reply({
                                 embeds: [
@@ -678,12 +679,11 @@ module.exports = client => {
             let attachment = [];
             try {
                 attachment = [await create_transcript_buffer([...messageCollection.values()], channel, channel.guild)]
-                try{ fs.unlinkSync(`${process.cwd()}/${channel.name}.html`)}catch(e){ console.log(e) }
             } catch (e){
                 console.log(e)
                 attachment = []
             }
-            dmauthor.send({
+            await dmauthor.send({
                 files: attachment,
                 embeds: [
                     new Discord.MessageEmbed()
@@ -694,7 +694,7 @@ module.exports = client => {
                         .setTitle("✅ TicketUser Closed the Ticket")
                     ]
             }).catch(console.error)
-            channel.send({
+            await channel.send({
                 files: attachment,
                 embeds: [
                     new Discord.MessageEmbed()
@@ -706,6 +706,7 @@ module.exports = client => {
                         .setDescription(`U CAN NOW DELETE IT IF YOU WANT!`)
                     ]
             }).catch(console.error)
+            try{ fs.unlinkSync(`${process.cwd()}/${channel.name}.html`)}catch(e){ console.log(e) }
         }
         if(interaction.isButton() && interaction.customId == "force_modmail_close" && !interaction.guildId){
             if(client.modmailDb.has(interaction.user.id)) client.modmailDb.delete(interaction.user.id);
@@ -789,12 +790,12 @@ module.exports = client => {
             let attachment = [];
             try {
                 attachment = [await create_transcript_buffer([...messageCollection.values()], interaction.message.channel, interaction.message.guild)]
-                try{ fs.unlinkSync(`${process.cwd()}/${interaction.message.channel.name}.html`)}catch(e){ console.log(e) }
+                
             } catch (e){
                 console.log(e)
                 attachment = []
             }
-            author.send({
+            await author.send({
                 files: attachment,
                 embeds: [
                     new Discord.MessageEmbed()
@@ -805,7 +806,7 @@ module.exports = client => {
                         .setTitle("✅ Supporter Closed the Ticket")
                     ]
             }).catch(console.error)
-            interaction.user.send({
+            await interaction.user.send({
                 files: attachment,
                 embeds: [
                     new Discord.MessageEmbed()
@@ -816,7 +817,7 @@ module.exports = client => {
                         .setTitle("✅ Supporter Closed the Ticket")
                     ]
             }).catch(console.error)
-            return interaction.message.reply({
+            await interaction.message.reply({
                 files: attachment,
                 embeds: [
                     new Discord.MessageEmbed()
@@ -828,6 +829,7 @@ module.exports = client => {
                         .setDescription(`U CAN NOW DELETE IT IF YOU WANT!`)
                     ]
             }).catch(console.error)
+            try{ fs.unlinkSync(`${process.cwd()}/${channel.name}.html`)}catch(e){  }
         }
     })
 
