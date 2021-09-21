@@ -1,16 +1,43 @@
 {
-  "name": "modmailbot",
-  "version": "1.0.0",
-  "description": "",
+  "name": "easy_modmail_bot",
+  "version": "1.0.2",
+  "description": "A simple Multi Guild Modmail Bot coded in v13 using the enmap Database Working on any host, like repl.it or vps! Its fast and working bug free + Security options!",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "discord.js": "^13.1.0",
     "enmap": "^5.8.7",
     "moment": "^2.29.1"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tomato6966/Multiguild-Modmail.git"
+  },
+  "keywords": [
+    "Modmail",
+    "Discord",
+    "bot",
+    "Discordjs",
+    "Discord-js",
+    "v13",
+    "Discordv13",
+    "Latest",
+    "Mod-mail",
+    "Easy",
+    "Fast",
+    "Free",
+    "Replit",
+    "Repl.it",
+    "OP"
+  ],
+  "author": "Tomato#6966",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tomato6966/Multiguild-Modmail/issues"
+  },
+  "homepage": "https://github.com/Tomato6966/Multiguild-Modmail#readme"
 }
