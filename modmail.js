@@ -29,7 +29,12 @@ module.exports = client => {
                     ]}).catch(console.error);
                 }
                 if(cmd && cmd.length > 0){
-                    if(cmd == "setup"){
+                    if(cmd == "invite" || cmd == "add"){
+                        message.reply({
+                            embeds: [new Discord.MessageEmbed().setColor("BLURPLE").setTitle(`:white_check_mark: **Thanks for inviting me**`)
+                            .setDescription(`[**Click here to invite me!**](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot)`)
+                        ]})
+                    } else if(cmd == "setup"){
                         if(!message.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) {
                             return message.reply({
                                 embeds: [
@@ -221,7 +226,7 @@ module.exports = client => {
                             let attachment = [];
                             try {
                                 attachment = [await create_transcript_buffer([...messageCollection.values()], message.channel, message.guild)]
-                                try{ fs.unlink(`${process.cwd()}/${message.channel.name}.html`)}catch(e){ console.log(e) }
+                                try{ fs.unlinkSync(`${process.cwd()}/${message.channel.name}.html`)}catch(e){ console.log(e) }
                             } catch (e){
                                 console.log(e)
                                 attachment = []
@@ -289,6 +294,7 @@ module.exports = client => {
                             .addFields([
                                 {name: "**ping**", value: `> *Shows the Ping of me.*`, inline: true},
                                 {name: "**help**", value: `> *Gives you help!*`, inline: true},
+                                {name: "**invite**", value: `> *Gives you an Invite link!*`, inline: true},
                             ]))
                         embeds.push(new Discord.MessageEmbed()
                             .setColor("RED")
@@ -426,7 +432,16 @@ module.exports = client => {
         }
     })
 
-
+    client.on("ready", () => {
+        client.user.setActivity({
+            name: "Dm me for help | m!help | " + client.guilds.cache.size + " Guilds", type: "PLAYING", url: "https://twitch.tv/#"
+        })
+        setInterval(() => {
+            client.user.setActivity({
+                name: "Dm me for help | m!help | " + client.guilds.cache.size + " Guilds", type: "PLAYING", url: "https://twitch.tv/#"
+            })
+        }, (1000 * 60 * 5));
+    })
     // DMS
     client.on("messageCreate", async (message) => {
         if(message.author.bot) return;
@@ -663,7 +678,7 @@ module.exports = client => {
             let attachment = [];
             try {
                 attachment = [await create_transcript_buffer([...messageCollection.values()], channel, channel.guild)]
-                try{ fs.unlink(`${process.cwd()}/${channel.name}.html`)}catch(e){ console.log(e) }
+                try{ fs.unlinkSync(`${process.cwd()}/${channel.name}.html`)}catch(e){ console.log(e) }
             } catch (e){
                 console.log(e)
                 attachment = []
@@ -774,7 +789,7 @@ module.exports = client => {
             let attachment = [];
             try {
                 attachment = [await create_transcript_buffer([...messageCollection.values()], interaction.message.channel, interaction.message.guild)]
-                try{ fs.unlink(`${process.cwd()}/${interaction.message.channel.name}.html`)}catch(e){ console.log(e) }
+                try{ fs.unlinkSync(`${process.cwd()}/${interaction.message.channel.name}.html`)}catch(e){ console.log(e) }
             } catch (e){
                 console.log(e)
                 attachment = []

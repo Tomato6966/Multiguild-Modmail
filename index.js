@@ -3,7 +3,20 @@ const Enmap = require("enmap");
 const config = require("./config.json")
 
 const client = new Discord.Client({
-    shards: "auto", // 1800+ 
+    shards: "auto", // 1800+ ,
+    allowedMentions: {
+      parse: ["roles", "users"],
+      repliedUser: false,
+    },
+    failIfNotExists: false,
+    presence: {
+      activity: {
+        name: `Dm me for help | m!help`, 
+        type: "PLAYING", 
+        url: "https://twitch.tv/#"
+      },
+      status: "online"
+    },
     restTimeOffset: 0,
     partials: ["CHANNEL", "MESSAGE", "REACTION"],
     intents: [
