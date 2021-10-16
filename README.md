@@ -15,8 +15,12 @@ A simple Multi Guild Modmail Bot coded in v13 using the enmap Database Working o
 
 - `node .` to start the Bot ( or `node index.js` / `npm start` )
 
+<br/>
+  
+***
+
 ## [Discord Server 😎](https://discord.gg/milrato) | [Website](https://milrato.dev)
-<a href="https://discord.gg/milrato"><img src="https://invidget.switchblade.xyz/milrato" /></a>
+<a href="https://discord.gg/milrato"><img src="https://discord.com/api/guilds/773668217163218944/widget.png?style=banner2"></a>
 
 ***
 
